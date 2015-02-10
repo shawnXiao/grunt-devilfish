@@ -3,8 +3,21 @@
     "version": "0.0.1",
     "description": "pack javascipt",
     "dependencies": {
-        "chalk": "~0.5.1",
         "debug": "~2.1.0",
+        "glob": "~4.3.5",
         "lodash": "~2.4.1"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-contrib-jshint": "~0.7.2"
+    },
+    "peerDependencies": {
+        "grunt": ">=0.4.0"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "licenses": {
+        "type": "BSD"
     }
 }
