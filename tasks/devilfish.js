@@ -11,21 +11,12 @@ var glob = require("glob");
 var _ = require("underscore");
 var crypto = require("crypto");
 var grunt = require("grunt");
+var chalk = require("chalk");
 
 module.exports = function (grunt) {
-    grunt.registerTask("devilfish", "pack javascript file which is used CommonJS", function () {
+    grunt.registerMultiTask("devilfish", "pack javascript file which is used CommonJS", function () {
         var options = this.options();
-        pack({
-            cwd: "./scripts",
-            src: "pages/*.js",
-            dest: "dist/scripts",
-            preload: ["libs/jquery.js", "libs/underscore.js"],
-            alias: {},
-            paths: {
-                components: './components',
-                modules: './modules'
-            }
-        });
+        pack(this.data);
     });
 }
 
@@ -41,6 +32,7 @@ function pack(config) {
         var mergedContent = getCMDContent(fileItem);
         var distFileName = path.join("../" + config.dest, fileItem)
         grunt.file.write(distFileName, mergedContent);
+        grunt.log.writeln('File ' + chalk.cyan(distFileName) + ' created.');
     });
     process.chdir(startDir);
 
